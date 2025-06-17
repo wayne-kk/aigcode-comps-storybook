@@ -1,13 +1,13 @@
 import React from 'react';
-import Axxx from './Axxx';
-import Bxxx from './Bxxx';
-import Cxxx from './Cxxx';
-import Dxxx from './Dxxx';
-import Txxx from './Txxx';
-import Wxxx from './Wxxx';
+import Timeline from './Timeline';
+import DataTable from './DataTable';
+import PieChart from './PieChart';
+import ItemGrid from './ItemGrid';
+import DateBarChart from './DateBarChart';
+import MetricCard from './MetricCard';
 
 // 子组件 props 类型定义
-export type TxxxProps = {
+export type BarChartProps = {
   title?: string;
   data?: {
     month: string;
@@ -15,7 +15,7 @@ export type TxxxProps = {
   }[];
 };
 
-export type CxxxProps = {
+export type PieChartProps = {
   title?: string;
   amount?: string;
   percentageChange?: string;
@@ -23,7 +23,7 @@ export type CxxxProps = {
   pieChartData?: { name: string; value: number }[];
 };
 
-export type WxxxProps = {
+export type MetricCardProps = {
   title?: string;
   amount?: string;
   percentage?: string;
@@ -31,7 +31,7 @@ export type WxxxProps = {
   chartData?: { value: number }[];
 };
 
-export type AxxxProps = {
+export type TimelineProps = {
   title?: string;
   transactions?: {
     time: string;
@@ -41,7 +41,7 @@ export type AxxxProps = {
   }[];
 };
 
-export type BxxxProps = {
+export type DataTableProps = {
   title?: string;
   products?: {
     id: string;
@@ -54,15 +54,15 @@ export type BxxxProps = {
 
 // Dashboard 组件 props 类型
 export type DashboardProps = {
-  txxxProps?: TxxxProps;
-  cxxxProps?: CxxxProps;
-  wxxxProps?: WxxxProps;
-  axxxProps?: AxxxProps;
-  bxxxProps?: BxxxProps;
+  barChartProps?: BarChartProps;
+  pieChartProps?: PieChartProps;
+  metricCardProps?: MetricCardProps;
+  timelineProps?: TimelineProps;
+  dataTableProps?: DataTableProps;
 };
 
-// Txxx 默认 props
-const defaultTxxxProps: TxxxProps = {
+// BarChart 默认 props
+const defaultBarChartProps: BarChartProps = {
   title: 'Sales Overview1',
   data: [
     {
@@ -78,7 +78,6 @@ const defaultTxxxProps: TxxxProps = {
         { date: '23/08', sales: 380, returns: 240 },
         { date: '24/08', sales: 320, returns: 340 },
         { date: '25/08', sales: 480, returns: 240 },
-
       ],
     },
     {
@@ -97,8 +96,8 @@ const defaultTxxxProps: TxxxProps = {
   ],
 };
 
-// Cxxx 默认 props
-const defaultCxxxProps: CxxxProps = {
+// PieChart 默认 props
+const defaultPieChartProps: PieChartProps = {
   title: '年度分析',
   amount: '¥36,358',
   percentageChange: '+9%',
@@ -110,8 +109,8 @@ const defaultCxxxProps: CxxxProps = {
   ],
 };
 
-// Wxxx 默认 props
-const defaultWxxxProps: WxxxProps = {
+// MetricCard 默认 props
+const defaultMetricCardProps: MetricCardProps = {
   title: '月度收入',
   amount: '¥6,820',
   percentage: '+9%',
@@ -127,8 +126,8 @@ const defaultWxxxProps: WxxxProps = {
   ],
 };
 
-// Axxx 默认 props
-const defaultAxxxProps: AxxxProps = {
+// Timeline 默认 props
+const defaultTimelineProps: TimelineProps = {
   title: 'Recent Transactions',
   transactions: [
     {
@@ -172,8 +171,8 @@ const defaultAxxxProps: AxxxProps = {
   ],
 };
 
-// Bxxx 默认 props
-const defaultBxxxProps: BxxxProps = {
+// DataTable 默认 props
+const defaultDataTableProps: DataTableProps = {
   title: 'Product Performance',
   products: [
     {
@@ -220,11 +219,11 @@ const defaultBxxxProps: BxxxProps = {
 };
 
 function Dashboard({
-  txxxProps = defaultTxxxProps,
-  cxxxProps = defaultCxxxProps,
-  wxxxProps = defaultWxxxProps,
-  axxxProps = defaultAxxxProps,
-  bxxxProps = defaultBxxxProps,
+  barChartProps = defaultBarChartProps,
+  pieChartProps = defaultPieChartProps,
+  metricCardProps = defaultMetricCardProps,
+  timelineProps = defaultTimelineProps,
+  dataTableProps = defaultDataTableProps,
 }: DashboardProps) {
   return (
     <div className="w-full min-h-screen bg-[#f8fafc] p-4 flex flex-col gap-4">
@@ -232,26 +231,26 @@ function Dashboard({
       <div className="flex flex-col lg:flex-row gap-4 items-stretch">
         {/* 左侧大图表 */}
         <div className="flex-1 min-w-0 flex flex-col">
-          <Txxx {...txxxProps} />
+          <DateBarChart {...barChartProps} />
         </div>
         {/* 右侧上下两个小卡片 */}
         <div className="flex flex-col justify-center items-center gap-4 w-full max-w-[360px] min-w-[300px] flex-shrink-0">
-          <Cxxx {...cxxxProps} />
-          <Wxxx {...wxxxProps} />
+          <PieChart {...pieChartProps} />
+          <MetricCard {...metricCardProps} />
         </div>
       </div>
       {/* 中间部分 */}
       <div className="flex flex-col flex-grow lg:flex-row gap-4 justify-between ">
         <div className="flex flex-col flex-grow max-w-[420px] w-full flex-shrink-0">
-          <Axxx {...axxxProps} />
+          <Timeline {...timelineProps} />
         </div>
         <div className="flex flex-col h-full min-w-0 w-full">
-          <Bxxx {...bxxxProps} />
+          <DataTable {...dataTableProps} />
         </div>
       </div>
       {/* 下半部分 */}
       <div>
-        <Dxxx />
+        <ItemGrid />
       </div>
     </div>
   );
