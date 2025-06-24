@@ -22,7 +22,7 @@ const CustomTooltip = ({ active, payload }: any) => {
     return null;
 };
 
-function PieChart({
+function DatePieChart({
     title = '年度分析',
     amount = '¥36,358',
     percentageChange = '+9%',
@@ -115,4 +115,4 @@ function PieChart({
     );
 }
 
-export default PieChart;
+export default DatePieChart;
