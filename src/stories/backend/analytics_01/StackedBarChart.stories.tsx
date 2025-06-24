@@ -1,16 +1,16 @@
 // 自动生成的故事文件 - 请勿手动修改
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import DateBarChart from '../../../components/backend/dashboard/DateBarChart';
+import StackedBarChart from '../../../components/backend/analytics_01/StackedBarChart';
 
 const meta = {
-  title: '组件/backend/dashboard/BarChart',
-  component: DateBarChart,
+  title: '组件/backend/analytics_01/StackedBarChart',
+  component: StackedBarChart,
   parameters: {
     layout: 'fullscreen',
     componentSubtitle: 'backend 类别的组件',
   },
-} satisfies Meta<typeof DateBarChart>;
+} satisfies Meta<typeof StackedBarChart>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,7 +25,7 @@ export const Default: Story = {
       borderRadius: '8px',
       height: '700px'
     }}>
-      <DateBarChart />
+      <StackedBarChart />
     </div>
   ),
 };

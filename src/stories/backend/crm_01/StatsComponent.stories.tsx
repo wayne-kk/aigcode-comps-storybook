@@ -1,16 +1,16 @@
 // 自动生成的故事文件 - 请勿手动修改
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import PieChart from '../../../components/backend/dashboard/PieChart';
+import StatsComponent from '../../../components/backend/crm_01/StatsComponent';
 
 const meta = {
-  title: '组件/backend/dashboard/PieChart',
-  component: PieChart,
+  title: '组件/backend/crm_01/StatsComponent',
+  component: StatsComponent,
   parameters: {
     layout: 'fullscreen',
     componentSubtitle: 'backend 类别的组件',
   },
-} satisfies Meta<typeof PieChart>;
+} satisfies Meta<typeof StatsComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,7 +25,7 @@ export const Default: Story = {
       borderRadius: '8px',
       height: '700px'
     }}>
-      <PieChart />
+      <StatsComponent />
     </div>
   ),
 };

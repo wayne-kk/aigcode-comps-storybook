@@ -1,22 +1,21 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ui/card';
-import { Input } from '@ui/input';
+import { Card, CardHeader, CardTitle, CardContent } from '@ui/card';
 import { Button } from '@ui/button';
+import { Badge } from '@ui/badge';
 import { Checkbox } from '@ui/checkbox';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@ui/table';
 
-interface Lead {
+type Lead = {
   status: string;
   email: string;
   amount: string;
-}
+};
 
-interface PricingComponentProps {
+type LeadsTableProps = {
   title?: string;
   leads?: Lead[];
-}
+};
 
-export default function PricingComponent({
+function LeadsTable({
   title = 'Leads',
   leads = [
     { status: 'Success', email: 'ken99@yahoo.com', amount: '$316.00' },
@@ -24,171 +23,113 @@ export default function PricingComponent({
     { status: 'Processing', email: 'monserrat44@gmail.com', amount: '$837.00' },
     { status: 'Success', email: 'silas22@gmail.com', amount: '$874.00' },
     { status: 'Failed', email: 'carmella@hotmail.com', amount: '$721.00' },
-  ],
-}: PricingComponentProps) {
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
-  const [filterValue, setFilterValue] = React.useState('');
-
-  const handleSelectAll = () => {
-    if (selectedRows.length === leads.length) {
-      setSelectedRows([]);
-    } else {
-      setSelectedRows(leads.map((_, index) => index));
-    }
-  };
-
-  const handleSelectRow = (index: number) => {
-    if (selectedRows.includes(index)) {
-      setSelectedRows(selectedRows.filter((i) => i !== index));
-    } else {
-      setSelectedRows([...selectedRows, index]);
+  ]
+}: LeadsTableProps) {
+  const getStatusConfig = (status: string) => {
+    switch (status) {
+      case 'Success':
+        return {
+          className: 'bg-gradient-to-br from-[#D1FAE5] to-[#A7F3D0] text-emerald-700 border-0',
+          style: { boxShadow: 'inset 1px 1px 2px rgba(34, 197, 94, 0.2), inset -1px -1px 2px rgba(255, 255, 255, 0.8)' }
+        };
+      case 'Processing':
+        return {
+          className: 'bg-gradient-to-br from-[#E1E9ED] to-[#D1DCE2] text-[#5B7A8C] border-0',
+          style: { boxShadow: 'inset 1px 1px 2px rgba(123, 155, 174, 0.2), inset -1px -1px 2px rgba(255, 255, 255, 0.8)' }
+        };
+      case 'Failed':
+        return {
+          className: 'bg-gradient-to-br from-[#FEE2E2] to-[#FECACA] text-red-700 border-0',
+          style: { boxShadow: 'inset 1px 1px 2px rgba(220, 38, 38, 0.2), inset -1px -1px 2px rgba(255, 255, 255, 0.8)' }
+        };
+      default:
+        return {
+          className: 'bg-gradient-to-br from-[#E1E9ED] to-[#D1DCE2] text-[#5B7A8C] border-0',
+          style: { boxShadow: 'inset 1px 1px 2px rgba(123, 155, 174, 0.2), inset -1px -1px 2px rgba(255, 255, 255, 0.8)' }
+        };
     }
   };
 
   return (
-    <Card className="bg-white text-[oklch(0.274_0.008_286.03)] flex flex-col gap-6 rounded-lg border border-[oklch(0.92_0.0053_286.32)] py-6 col-span-2 shadow-none">
-      <CardHeader className="flex flex-row justify-between px-6 pb-0">
-        <CardTitle className="text-base leading-none font-semibold">{title}</CardTitle>
+    <Card className="w-full bg-gradient-to-br from-[#F1F5F7] to-[#E1E9ED] rounded-2xl border-0"
+          style={{
+            boxShadow: 'inset 2px 2px 8px rgba(123, 155, 174, 0.15), inset -2px -2px 8px rgba(255, 255, 255, 0.8), 2px 2px 12px rgba(123, 155, 174, 0.1)'
+          }}>
+      <CardHeader className="px-6 py-5">
+        <CardTitle className="text-lg font-bold text-black">{title}</CardTitle>
       </CardHeader>
-      <CardContent className="px-6">
-        <div className="mb-4 flex items-center gap-2">
-          <Input
-            className="h-9 w-full rounded-md border border-[oklch(0.92_0.0053_286.32)] bg-transparent px-3 py-2 text-sm shadow-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[oklch(0.5_0.12_286.03)] placeholder:text-[oklch(0.5_0.05_286.03)]"
-            placeholder="Filter leads..."
-            value={filterValue}
-            onChange={(e) => setFilterValue(e.target.value)}
-          />
-          <Button
-            variant="outline"
-            className="ml-auto h-9 rounded-md border border-[oklch(0.92_0.0053_286.32)] bg-white px-4 py-2 text-sm font-medium shadow-none hover:bg-[oklch(0.97_0.01_286.03)] hover:text-[oklch(0.274_0.008_286.03)]"
-            type="button"
-          >
-            Columns{' '}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="ml-2 h-4 w-4"
-            >
-              <path d="m6 9 6 6 6-6"></path>
-            </svg>
-          </Button>
-        </div>
-
-        <div className="rounded-md border border-[oklch(0.92_0.0053_286.32)]">
-          <div className="relative w-full overflow-x-auto">
-            <Table className="w-full text-sm">
-              <TableHeader>
-                <TableRow className="border-b border-[oklch(0.92_0.0053_286.32)] hover:bg-[oklch(0.97_0.01_286.03)]">
-                  <TableHead className="h-10 px-2 text-left align-middle font-medium text-[oklch(0.5_0.05_286.03)] whitespace-nowrap">
-                    <Checkbox
-                      checked={selectedRows.length === leads.length && leads.length > 0}
-                      onCheckedChange={handleSelectAll}
-                      aria-label="Select all"
-                      className="h-4 w-4 rounded border border-[oklch(0.92_0.0053_286.32)] shadow-none data-[state=checked]:bg-[oklch(0.5_0.12_286.03)] data-[state=checked]:text-white"
+      <CardContent className="px-6 pb-6">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-[#E1E9ED]">
+                <th className="text-left py-3 pr-4 text-xs font-bold text-[#5B7A8C] uppercase">
+                  <Checkbox 
+                    className="h-4 w-4 rounded border-0 bg-gradient-to-br from-[#F7F9FA] to-[#EAEEF2] data-[state=checked]:bg-[#7A9BAE] data-[state=checked]:text-white"
+                    style={{
+                      boxShadow: 'inset 1px 1px 3px rgba(123, 155, 174, 0.2), inset -1px -1px 3px rgba(255, 255, 255, 0.9)'
+                    }}
+                  />
+                </th>
+                <th className="text-left py-3 px-4 text-xs font-bold text-[#5B7A8C] uppercase">Status</th>
+                <th className="text-left py-3 px-4 text-xs font-bold text-[#5B7A8C] uppercase">Email</th>
+                <th className="text-right py-3 px-4 text-xs font-bold text-[#5B7A8C] uppercase">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {leads.map((lead, index) => (
+                <tr 
+                  key={index} 
+                  className="border-b border-[#E1E9ED] hover:bg-gradient-to-r hover:from-[#EAEEF2] hover:to-[#DDE4E8] transition-all duration-200"
+                >
+                  <td className="py-4 pr-4">
+                    <Checkbox 
+                      className="h-4 w-4 rounded border-0 bg-gradient-to-br from-[#F7F9FA] to-[#EAEEF2] data-[state=checked]:bg-[#7A9BAE] data-[state=checked]:text-white"
+                      style={{
+                        boxShadow: 'inset 1px 1px 3px rgba(123, 155, 174, 0.2), inset -1px -1px 3px rgba(255, 255, 255, 0.9)'
+                      }}
                     />
-                  </TableHead>
-                  <TableHead className="h-10 px-2 text-left align-middle font-medium text-[oklch(0.5_0.05_286.03)] whitespace-nowrap">
-                    Status
-                  </TableHead>
-                  <TableHead className="h-10 px-2 text-left align-middle font-medium text-[oklch(0.5_0.05_286.03)] whitespace-nowrap">
-                    <Button
-                      variant="ghost"
-                      className="p-0 h-auto font-medium text-[oklch(0.5_0.05_286.03)] hover:bg-transparent hover:text-[oklch(0.274_0.008_286.03)]"
+                  </td>
+                  <td className="py-4 px-4">
+                    <Badge 
+                      variant="secondary" 
+                      className={`rounded-full px-3 py-1 text-xs font-bold ${getStatusConfig(lead.status).className}`}
+                      style={getStatusConfig(lead.status).style}
                     >
-                      Email
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="ml-1 h-3 w-3"
-                      >
-                        <path d="m7 15 5 5 5-5"></path>
-                        <path d="m7 9 5-5 5 5"></path>
-                      </svg>
-                    </Button>
-                  </TableHead>
-                  <TableHead className="h-10 px-2 text-right align-middle font-medium text-[oklch(0.5_0.05_286.03)] whitespace-nowrap">
-                    Amount
-                  </TableHead>
-                  <TableHead className="h-10 px-2 text-left align-middle font-medium text-[oklch(0.5_0.05_286.03)] whitespace-nowrap"></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {leads.map((lead, index) => (
-                  <TableRow
-                    key={index}
-                    className="border-b border-[oklch(0.92_0.0053_286.32)] hover:bg-[oklch(0.97_0.01_286.03)]"
-                  >
-                    <TableCell className="p-2 align-middle whitespace-nowrap">
-                      <Checkbox
-                        checked={selectedRows.includes(index)}
-                        onCheckedChange={() => handleSelectRow(index)}
-                        aria-label="Select row"
-                        className="h-4 w-4 rounded border border-[oklch(0.92_0.0053_286.32)] shadow-none data-[state=checked]:bg-[oklch(0.5_0.12_286.03)] data-[state=checked]:text-white"
-                      />
-                    </TableCell>
-                    <TableCell className="p-2 align-middle whitespace-nowrap">{lead.status}</TableCell>
-                    <TableCell className="p-2 align-middle whitespace-nowrap">{lead.email}</TableCell>
-                    <TableCell className="p-2 align-middle whitespace-nowrap text-right font-medium">
-                      {lead.amount}
-                    </TableCell>
-                    <TableCell className="p-2 align-middle whitespace-nowrap text-right">
-                      <Button variant="ghost" className="h-9 rounded-md px-2 py-2 hover:bg-[oklch(0.97_0.01_286.03)]">
-                        <span className="sr-only">Open menu</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="h-5 w-5"
-                        >
-                          <circle cx="12" cy="12" r="1"></circle>
-                          <circle cx="19" cy="12" r="1"></circle>
-                          <circle cx="5" cy="12" r="1"></circle>
-                        </svg>
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+                      {lead.status}
+                    </Badge>
+                  </td>
+                  <td className="py-4 px-4 text-sm font-medium text-black">{lead.email}</td>
+                  <td className="py-4 px-4 text-right text-sm font-bold text-emerald-600">{lead.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        <div className="flex items-center justify-between pt-4">
-          <div className="text-[oklch(0.5_0.05_286.03)] text-sm">
-            {selectedRows.length} of {leads.length} row(s) selected.
+        
+        {/* 分页控件 */}
+        <div className="flex items-center justify-between pt-6 border-t border-[#E1E9ED] mt-6">
+          <div className="text-sm text-[#5B7A8C] font-medium">
+            Showing <span className="text-[#7A9BAE] font-bold">1</span> to <span className="text-[#7A9BAE] font-bold">5</span> of <span className="text-[#7A9BAE] font-bold">15</span> results
           </div>
-          <div className="flex space-x-2">
-            <Button
-              variant="outline"
-              className="h-8 rounded-md border border-[oklch(0.92_0.0053_286.32)] bg-white px-3 py-1 text-sm font-medium shadow-none hover:bg-[oklch(0.97_0.01_286.03)] disabled:opacity-50"
-              disabled={true}
+          <div className="flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="h-9 px-4 rounded-xl border-0 bg-gradient-to-br from-[#F1F5F7] to-[#E1E9ED] text-sm font-medium text-[#5B7A8C] hover:from-[#EAEEF2] hover:to-[#DDE4E8]"
+              style={{
+                boxShadow: 'inset 1px 1px 3px rgba(123, 155, 174, 0.2), inset -1px -1px 3px rgba(255, 255, 255, 0.9), 1px 1px 3px rgba(123, 155, 174, 0.1)'
+              }}
             >
               Previous
             </Button>
-            <Button
-              variant="outline"
-              className="h-8 rounded-md border border-[oklch(0.92_0.0053_286.32)] bg-white px-3 py-1 text-sm font-medium shadow-none hover:bg-[oklch(0.97_0.01_286.03)] disabled:opacity-50"
-              disabled={true}
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="h-9 px-4 rounded-xl border-0 bg-gradient-to-br from-[#F1F5F7] to-[#E1E9ED] text-sm font-medium text-[#5B7A8C] hover:from-[#EAEEF2] hover:to-[#DDE4E8]"
+              style={{
+                boxShadow: 'inset 1px 1px 3px rgba(123, 155, 174, 0.2), inset -1px -1px 3px rgba(255, 255, 255, 0.9), 1px 1px 3px rgba(123, 155, 174, 0.1)'
+              }}
             >
               Next
             </Button>
@@ -198,3 +139,5 @@ export default function PricingComponent({
     </Card>
   );
 }
+
+export default LeadsTable;

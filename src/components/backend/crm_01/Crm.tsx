@@ -71,28 +71,28 @@ interface CrmProps {
   deals?: SalesDeal[];
 }
 
-// 默认数据 - 统一莫兰迪蓝色系图标
+// 默认数据
 const defaultStatCards: StatCard[] = [
   {
     label: 'Total Customers',
     value: 1890,
     growth: '+10.4%',
     isGrowthPositive: true,
-    icon: <Users className="size-5 text-[#7A9BAE]" />,
+    icon: <Users className="size-5 text-gray-500 dark:text-gray-400" />,
   },
   {
     label: 'Total Deals',
     value: '1,02,890',
     growth: '-0.8%',
     isGrowthPositive: false,
-    icon: <Briefcase className="size-5 text-[#7A9BAE]" />,
+    icon: <Briefcase className="size-5 text-gray-500 dark:text-gray-400" />,
   },
   {
     label: 'Total Revenue',
     value: '$435,578',
     growth: '+20.1%',
     isGrowthPositive: true,
-    icon: <Wallet className="size-5 text-[#7A9BAE]" />,
+    icon: <Wallet className="size-5 text-gray-500 dark:text-gray-400" />,
   },
 ];
 
@@ -128,20 +128,19 @@ const defaultTasks: Task[] = [
   },
 ];
 
-// 莫兰迪蓝色系图表色板 - 统一配色方案
 const defaultLeadSources: LeadSource[] = [
-  { name: 'SOCIAL', value: 275, color: '#5B7A8C' }, // 深蓝灰色
-  { name: 'EMAIL', value: 200, color: '#7A9BAE' }, // 中蓝灰色
-  { name: 'CALL', value: 287, color: '#95B2C1' }, // 浅蓝灰色
-  { name: 'OTHERS', value: 173, color: '#B0C7D4' }, // 最浅蓝灰色
+  { name: 'SOCIAL', value: 275, color: '#000000' },
+  { name: 'EMAIL', value: 200, color: '#4B4B4B' },
+  { name: 'CALL', value: 287, color: '#2D2D2D' },
+  { name: 'OTHERS', value: 173, color: '#ADADAD' },
 ];
 
 const defaultDeals: SalesDeal[] = [
-  { stage: 'Lead', count: 235, value: 420500, percentage: 38, color: '#5B7A8C' }, // 深蓝灰色
-  { stage: 'Qualified', count: 146, value: 267800, percentage: 24, color: '#6B8A9C' }, // 中深蓝灰色
-  { stage: 'Proposal', count: 84, value: 192400, percentage: 18, color: '#7A9BAE' }, // 中蓝灰色
-  { stage: 'Negotiation', count: 52, value: 129600, percentage: 12, color: '#95B2C1' }, // 中浅蓝灰色
-  { stage: 'Closed Won', count: 36, value: 87200, percentage: 8, color: '#B0C7D4' }, // 浅蓝灰色
+  { stage: 'Lead', count: 235, value: 420500, percentage: 38, color: '#000000' },
+  { stage: 'Qualified', count: 146, value: 267800, percentage: 24, color: '#4B4B4B' },
+  { stage: 'Proposal', count: 84, value: 192400, percentage: 18, color: '#222222' },
+  { stage: 'Negotiation', count: 52, value: 129600, percentage: 12, color: '#ADADAD' },
+  { stage: 'Closed Won', count: 36, value: 87200, percentage: 8, color: '#E5E5E5' },
 ];
 
 const Crm: React.FC<CrmProps> = ({ 
@@ -180,14 +179,11 @@ const Crm: React.FC<CrmProps> = ({
   };
 
   return (
-    <div className={`w-full p-8 space-y-8 min-h-screen ${className}`}
-         style={{ 
-           background: 'linear-gradient(135deg, #F1F5F7 0%, #E1E9ED 100%)'
-         }}>
+    <div className={`w-full p-6 space-y-8 bg-gray-50 min-h-screen ${className}`}>
       {/* 页面标题 */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-black mb-3">CRM Dashboard</h1>
-        <p className="text-[#5B7A8C] text-lg font-medium">Manage your customer relationships and sales pipeline</p>
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-gray-900">CRM Dashboard</h1>
+        <p className="text-gray-600 mt-2">Manage your customer relationships and sales pipeline</p>
       </div>
 
       {/* 统计卡片区域 */}
@@ -199,7 +195,7 @@ const Crm: React.FC<CrmProps> = ({
       </div>
 
       {/* 图表和任务区域 */}
-      <div className="grid gap-8 lg:grid-cols-3 mb-8 lg:items-stretch">
+      <div className="grid gap-6 lg:grid-cols-3 mb-8 lg:items-stretch">
         {/* 任务管理 */}
         <div className="flex flex-col h-full">
           <div className="flex-1">
