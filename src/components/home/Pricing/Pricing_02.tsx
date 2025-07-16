@@ -1,12 +1,11 @@
 "use client";
-
+// 这是一个展示定价的组件，可以展示不同的定价方案，包括月付和年付，以及不同的价格和功能。
 import { buttonVariants } from "@ui/button";
 import { Label } from "@ui/label";
 import { Switch } from "@ui/switch";
 import { cn } from "@ui/utils";
 import { motion } from "framer-motion";
 import { Check, Star } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
 
 interface PricingPlan {
@@ -193,8 +192,8 @@ export default function Pricing_02({
 
               <hr className="w-full my-4" />
 
-              <Link
-                to={plan.href}
+              <a
+                href={plan.href}
                 className={cn(
                   buttonVariants({
                     variant: "outline",
@@ -207,7 +206,7 @@ export default function Pricing_02({
                 )}
               >
                 {plan.buttonText}
-              </Link>
+              </a>
               <p className="mt-6 text-xs leading-5 text-muted-foreground">
                 {plan.description}
               </p>

@@ -19,7 +19,7 @@ export interface IFeatureProps {
   features: IFeaturesItem[]
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_06: React.FC<IFeatureProps> = ({
   title = `Innovative Solutions for Your Design Needs`,
   description = `Explore our range of creative services tailored to establish your brand's digital presence and engage your audience with exceptional design aesthetics.`,
   buttonText = `Learn More`,
@@ -95,4 +95,4 @@ const Feature: React.FC<IFeatureProps> = ({
 }
 
 
-export default Feature;
+export default Feature_06;

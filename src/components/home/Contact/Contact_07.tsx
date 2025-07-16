@@ -29,48 +29,47 @@ interface Contact7Props {
 }: Contact7Props) => {
   return (
     <section className="bg-background py-32 px-20">
-      <div className="container">
-        <div className="mb-14">
+      <div className="container_contact_07">
+        <div className="mb-14 text-left">
           <h1 className="mt-2 mb-3 text-3xl font-semibold text-balance md:text-4xl">
             {title}
           </h1>
-          <p className="max-w-xl text-lg text-muted-foreground">
+          <p className="max-w-xl text-lg text-muted-foreground text-gray-500">
             {description}
           </p>
         </div>
-        <div className="grid gap-10 md:grid-cols-3">
-          <div>
+        <div className="grid gap-10 md:grid-cols-2 text-left">
+          <div className="bg-gray-100 p-4 rounded-lg">
             <span className="mb-3 flex size-12 flex-col items-center justify-center rounded-full bg-accent">
               <Mail className="h-6 w-auto" />
             </span>
             <p className="mb-2 text-lg font-semibold">{emailLabel}</p>
-            <p className="mb-3 text-muted-foreground">{emailDescription}</p>
-            <a
-              href={`mailto:${email}`}
+            <p className="mb-3 text-muted-foreground text-gray-500">{emailDescription}</p>
+            <div
               className="font-semibold hover:underline"
             >
               {email}
-            </a>
+            </div>
           </div>
-          <div>
+          <div className="bg-gray-100 p-4 rounded-lg">
             <span className="mb-3 flex size-12 flex-col items-center justify-center rounded-full bg-accent">
               <MapPin className="h-6 w-auto" />
             </span>
             <p className="mb-2 text-lg font-semibold">{officeLabel}</p>
-            <p className="mb-3 text-muted-foreground">{officeDescription}</p>
-            <a href="#" className="font-semibold hover:underline">
+            <p className="mb-3 text-muted-foreground text-gray-500">{officeDescription}</p>
+            <div className="font-semibold hover:underline">
               {officeAddress}
-            </a>
+            </div>
           </div>
-          <div>
+          <div className="bg-gray-100 p-4 rounded-lg">
             <span className="mb-3 flex size-12 flex-col items-center justify-center rounded-full bg-accent">
               <Phone className="h-6 w-auto" />
             </span>
             <p className="mb-2 text-lg font-semibold">{phoneLabel}</p>
-            <p className="mb-3 text-muted-foreground">{phoneDescription}</p>
-            <a href={`tel:${phone}`} className="font-semibold hover:underline">
+            <p className="mb-3 text-muted-foreground text-gray-700">{phoneDescription}</p>
+            <div className="font-semibold hover:underline">
               {phone}
-            </a>
+            </div>
           </div>
         </div>
       </div>

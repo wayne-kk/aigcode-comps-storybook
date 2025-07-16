@@ -19,7 +19,7 @@ export interface IFeatureProps {
   items: IItemsItem[]
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_20: React.FC<IFeatureProps> = ({
   header = {
     title: "Built exclusively for you",
     subtitle: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laborum — semper quis lectus nulla."
@@ -65,4 +65,4 @@ const Feature: React.FC<IFeatureProps> = ({
   )
 }
 
-export default Feature;
+export default Feature_20;

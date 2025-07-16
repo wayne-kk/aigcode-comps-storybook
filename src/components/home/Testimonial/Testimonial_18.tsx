@@ -127,17 +127,17 @@ export interface AnimatedTestimonialsProps {
         >
           {/* Left side: Heading and navigation */}
           <motion.div variants={itemVariants} className="flex flex-col justify-center">
-            <div className="space-y-6">
+            <div className="space-y-6 flex flex-col items-start">
               {badgeText && (
-                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">
-                  <Star className="mr-1 h-3.5 w-3.5 fill-primary" />
+                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-[rgba(24, 24, 27, 0.8)]">
+                  <Star className="mr-1 h-3.5 w-3.5 fill-gray-800" />
                   <span>{badgeText}</span>
                 </div>
               )}
 
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{title}</h2>
 
-              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">{subtitle}</p>
+              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed text-left">{subtitle}</p>
 
               <div className="flex items-center gap-3 pt-4">
                 {testimonials.map((_, index) => (
@@ -145,7 +145,7 @@ export interface AnimatedTestimonialsProps {
                     key={index}
                     onClick={() => setActiveIndex(index)}
                     className={`h-2.5 rounded-full transition-all duration-300 ${
-                      activeIndex === index ? "w-10 bg-primary" : "w-2.5 bg-muted-foreground/30"
+                      activeIndex === index ? "w-10 bg-gray-800" : "w-2.5 bg-gray-300"
                     }`}
                     aria-label={`View testimonial ${index + 1}`}
                   />
@@ -169,7 +169,7 @@ export interface AnimatedTestimonialsProps {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{ zIndex: activeIndex === index ? 10 : 0 }}
               >
-                <div className="bg-card border shadow-lg rounded-xl p-8 h-full flex flex-col">
+                <div className="bg-white border shadow-lg rounded-xl p-8 h-full flex flex-col">
                   <div className="mb-6 flex gap-2">
                     {Array(testimonial.rating)
                       .fill(0)
@@ -179,7 +179,7 @@ export interface AnimatedTestimonialsProps {
                   </div>
 
                   <div className="relative mb-6 flex-1">
-                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-primary/20 rotate-180" />
+                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-gray-200 rotate-180" />
                     <p className="relative z-10 text-lg font-medium leading-relaxed">"{testimonial.content}"</p>
                   </div>
 
@@ -202,8 +202,8 @@ export interface AnimatedTestimonialsProps {
             ))}
 
             {/* Decorative elements */}
-            <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-xl bg-primary/5"></div>
-            <div className="absolute -top-6 -right-6 h-24 w-24 rounded-xl bg-primary/5"></div>
+            <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-xl bg-[rgba(24,24,27,0.05)]"></div>
+            <div className="absolute -top-6 -right-6 h-24 w-24 rounded-xl bg-[rgba(24,24,27,0.05)]"></div>
           </motion.div>
         </motion.div>
       </div>

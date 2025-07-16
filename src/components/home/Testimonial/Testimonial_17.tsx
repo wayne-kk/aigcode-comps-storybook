@@ -137,7 +137,6 @@ export interface TestimonialsSectionProps {
     >
       <div className="flex flex-col container items-center px-4 md:px-6">
         <motion.div
-          initial="hidden"
           animate={controls}
           variants={containerVariants}
           className="text-center mb-12 space-y-4"
@@ -145,20 +144,19 @@ export interface TestimonialsSectionProps {
           <motion.h2 variants={itemVariants} className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             {title}
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-muted-foreground max-w-[700px] mx-auto md:text-xl/relaxed">
+          <motion.p variants={itemVariants} className="text-gray-400 max-w-[700px] mx-auto md:text-xl/relaxed">
             {subtitle}
           </motion.p>
         </motion.div>
 
         <motion.div
-          initial="hidden"
           animate={controls}
           variants={containerVariants}
           className="md:grid md:grid-cols-[1fr_auto] gap-8 items-center max-w-[1200px] w-full"
         >
           <motion.div variants={itemVariants} className="relative">
             <div className="absolute -top-6 -left-6 z-10">
-              <Quote className="h-12 w-12 text-primary/20" strokeWidth={1} />
+              <Quote className="h-12 w-12 text-gray-300" strokeWidth={1} />
             </div>
 
             {/* Testimonial cards */}
@@ -176,13 +174,13 @@ export interface TestimonialsSectionProps {
                   <CardContent className="p-6 md:p-8 h-full flex flex-col">
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex items-center gap-4">
-                        <Avatar className="h-12 w-12 border-2 border-primary/10">
+                        <Avatar className="h-12 w-12 border-2 border-gray-300">
                           <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                           <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div className="text-left">
                           <h4 className="font-semibold">{testimonial.name}</h4>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-gray-400">
                             {testimonial.role}, {testimonial.company}
                           </p>
                         </div>
@@ -199,7 +197,7 @@ export interface TestimonialsSectionProps {
                     <p className="flex-1 italic text-base/relaxed">"{testimonial.content}"</p>
 
                     {showVerifiedBadge && (
-                      <div className="mt-4 text-xs text-right text-muted-foreground">Verified Customer</div>
+                      <div className="mt-4 text-xs text-right text-gray-400">Verified Customer</div>
                     )}
                   </CardContent>
                 </Card>
@@ -225,7 +223,7 @@ export interface TestimonialsSectionProps {
                   key={index}
                   className={cn(
                     "w-2 h-2 rounded-full transition-colors",
-                    index === activeIndex ? "bg-primary" : "bg-muted-foreground/20",
+                    index === activeIndex ? "bg-gray-800" : "bg-gray-300",
                   )}
                   role="button"
                   tabIndex={0}

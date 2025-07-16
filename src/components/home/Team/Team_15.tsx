@@ -72,9 +72,9 @@ function Team_15({
         {...(href ? { href } : {})}
         className={cn(
           "flex flex-col rounded-lg border-t",
-          "bg-gradient-to-b from-muted/50 to-muted/10",
+          "bg-gradient-to-b from-gray-100/50 to-gray-100/10",
           "p-4 text-start sm:p-6",
-          "hover:from-muted/60 hover:to-muted/20",
+          "hover:from-gray-100/60 hover:to-gray-100/20",
           "max-w-[320px] sm:max-w-[320px]",
           "transition-colors duration-300",
           cardClassName
@@ -93,7 +93,10 @@ function Team_15({
             </p>
           </div>
         </div>
-        <p className="sm:text-md mt-4 text-sm text-muted-foreground">
+        <p
+          className="sm:text-md mt-4 text-sm text-muted-foreground"
+          style={{ opacity: 0.7 }}
+        >
           {text}
         </p>
       </Card>
@@ -149,9 +152,6 @@ function Team_15({
                 ))}
               </div>
             </div>
-
-            <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-background sm:block" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-background sm:block" />
           </div>
         </div>
       </section>

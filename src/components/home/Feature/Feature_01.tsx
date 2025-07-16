@@ -14,7 +14,7 @@ export interface IFeatureProps {
   features: IFeaturesItem[]
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_01: React.FC<IFeatureProps> = ({
     features = [
       {
         icon: "fa-solid fa-magnifying-glass",
@@ -79,4 +79,4 @@ const Feature: React.FC<IFeatureProps> = ({
     );
   }
 
-export default Feature;
+export default Feature_01;

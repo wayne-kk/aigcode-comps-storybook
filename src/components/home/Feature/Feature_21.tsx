@@ -34,7 +34,7 @@ export interface IFeatureProps {
   primaryButton: IIFeaturePropsPrimarybutton
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_21: React.FC<IFeatureProps> = ({
   title = "Join over 2M creatives from around the world",
   creativeBg01 = "https://images.unsplash.com/photo-1744132813623-5ce3c521eef4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8",
   creative01 = "https://images.unsplash.com/photo-1744132813623-5ce3c521eef4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8",
@@ -145,4 +145,4 @@ const Feature: React.FC<IFeatureProps> = ({
 }
 
 
-export default Feature;
+export default Feature_21;

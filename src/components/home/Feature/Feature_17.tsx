@@ -15,7 +15,7 @@ export interface IFeatureProps {
   imageUrl: string
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_17: React.FC<IFeatureProps> = ({
   title = `Deploy faster`,
   mainHeading = `A better workflow`,
   description = `Discover a more efficient approach to design with our integrated tools and services. Streamline your projects from concept to completion.`,
@@ -70,4 +70,4 @@ const Feature: React.FC<IFeatureProps> = ({
 }
 
 
-export default Feature;
+export default Feature_17;

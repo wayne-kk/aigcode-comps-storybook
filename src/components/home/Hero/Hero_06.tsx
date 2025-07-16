@@ -17,7 +17,7 @@ export interface IHeroProps {
 }
 
 const Hero: React.FC<IHeroProps> = ({
-  title = `Innovative Solutions for Modern Enterprise`,
+  title = `Innovative Solutions for Modern Enterpris1`,
   subTitle = `Elevate Your Business Potential`,
   description = `Unlock the power of creative design with PixelCraft Studio where originality meets functionality, ensuring your business stands out in the competitive market.`,
   buttonPrimaryLabel = `Learn More`,

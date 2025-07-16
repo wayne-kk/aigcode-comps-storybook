@@ -57,7 +57,7 @@ const FAQ_08 = React.forwardRef<HTMLElement, FaqSectionProps>(
       <section
         ref={ref}
         className={cn(
-          "py-16 w-full bg-gradient-to-b from-transparent via-muted/50 to-transparent",
+          "py-16 w-full bg-gradient-to-b from-transparent via-muted/50 to-transparent flex flex-col items-center",
           className
         )}
         {...props}
@@ -70,7 +70,7 @@ const FAQ_08 = React.forwardRef<HTMLElement, FaqSectionProps>(
             transition={{ duration: 0.5 }}
             className="max-w-2xl mx-auto text-center mb-12"
           >
-            <h2 className="text-3xl font-semibold mb-3 bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text text-transparent">
+            <h2 className="text-3xl font-semibold mb-3 bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text">
               {title}
             </h2>
             {description && (
@@ -107,7 +107,7 @@ const FAQ_08 = React.forwardRef<HTMLElement, FaqSectionProps>(
               <p className="text-xs text-muted-foreground mb-4">
                 {contactInfo.description}
               </p>
-              <Button size="sm" onClick={contactInfo.onContact}>
+              <Button size="sm" onClick={contactInfo.onContact} className="bg-black text-white hover:bg-gray-800">
                 {contactInfo.buttonText}
               </Button>
             </motion.div>

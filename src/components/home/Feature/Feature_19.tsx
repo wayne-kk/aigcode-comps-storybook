@@ -15,7 +15,7 @@ export interface IFeatureProps {
   sectionDescription: string
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_19: React.FC<IFeatureProps> = ({
   features = [
     {
       name: 'Seamless Deployment',
@@ -83,4 +83,4 @@ const Feature: React.FC<IFeatureProps> = ({
   );
 }
 
-export default Feature;
+export default Feature_19;

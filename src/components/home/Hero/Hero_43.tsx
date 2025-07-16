@@ -55,8 +55,8 @@ function Hero_43({ content = defaultContent }: HeroProps) {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2">
           <div className="flex gap-4 flex-col">
-            <div>
-              <Badge variant="outline">{content.badgeText}</Badge>
+            <div className="text-left">
+              <Badge variant="outline" className="rounded-full px-4 font-bold">{content.badgeText}</Badge>
             </div>
             <div className="flex gap-4 flex-col">
               <h1 className="text-5xl md:text-7xl max-w-lg tracking-tighter text-left font-regular">
@@ -70,7 +70,7 @@ function Hero_43({ content = defaultContent }: HeroProps) {
               {content.secondaryButton && (
                 <Button 
                   size="lg" 
-                  className="gap-4" 
+                  className="!px-6 gap-4 border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-300" 
                   variant="outline"
                   onClick={content.secondaryButton.onClick}
                 >
@@ -80,7 +80,7 @@ function Hero_43({ content = defaultContent }: HeroProps) {
               {content.primaryButton && (
                 <Button 
                   size="lg" 
-                  className="gap-4"
+                  className="!px-6 gap-4 bg-black text-white hover:bg-gray-800"
                   onClick={content.primaryButton.onClick}
                 >
                   {content.primaryButton.text} {content.primaryButton.icon}

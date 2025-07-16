@@ -13,7 +13,7 @@ export interface IFeatureProps {
   features: IFeaturesItem[]
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_05: React.FC<IFeatureProps> = ({
   introText = `Say hello to Landingfolio`,
   title = `Clarity gives you the blocks & components you need to create a truly professional website, landing page or admin panel for your SaaS.`,
   features = [
@@ -60,4 +60,4 @@ const Feature: React.FC<IFeatureProps> = ({
   );
 }
 
-export default Feature;
+export default Feature_05;

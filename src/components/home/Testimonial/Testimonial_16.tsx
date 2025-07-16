@@ -4,7 +4,7 @@ import { useState } from "react"
 import { cn } from "@ui/utils"
 import { Button } from "@ui/button"
 import { Card } from "@ui/card"
-import { X } from "lucide-react"
+import { XOutlined } from "@ant-design/icons";
 
 interface Testimonial {
   image: string
@@ -15,7 +15,7 @@ interface Testimonial {
 }
 
 interface TestimonialsProps {
-  testimonials: Testimonial[]
+  testimonials?: Testimonial[]
   className?: string
   title?: string
   description?: string
@@ -136,7 +136,7 @@ const defaultTestimonials: Testimonial[] = [
         </div>
       </div>
 
-      <div className="relative">
+      <div className="relative pb-[16px]">
         <div
           className={cn(
             "flex justify-center items-center gap-5 flex-wrap",
@@ -178,7 +178,7 @@ const defaultTestimonials: Testimonial[] = [
                   onClick={() => openInNewTab(testimonial.social)}
                   className="absolute top-4 right-4 hover:opacity-80 transition-opacity"
                 >
-                  <X className="h-4 w-4" aria-hidden="true" />
+                  <XOutlined className="h-4 w-4" aria-hidden="true" />
                 </button>
               </Card>
             ))}
@@ -186,9 +186,9 @@ const defaultTestimonials: Testimonial[] = [
 
         {testimonials.length > maxDisplayed && !showAll && (
           <>
-            <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-background to-transparent" />
+            <div className="absolute bottom-0 left-0 w-full h-20" />
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-              <Button variant="secondary" onClick={() => setShowAll(true)}>
+              <Button variant="secondary" onClick={() => setShowAll(true)} className="bg-gray-100 text-black hover:bg-gray-200">
                 Load More
               </Button>
             </div>

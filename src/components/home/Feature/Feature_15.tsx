@@ -22,7 +22,7 @@ export interface IFeatureProps {
   backgroundColor: IIFeaturePropsBackgroundcolor
 }
 
-const Feature: React.FC<IFeatureProps> = ({
+const Feature_15: React.FC<IFeatureProps> = ({
   title = "Enhance Your Creative Workflow",
   description = "Leverage cutting-edge tools and services to make your designs stand out. Join our community of creative professionals today.",
   features = [
@@ -96,4 +96,4 @@ const Feature: React.FC<IFeatureProps> = ({
   )
 }
 
-export default Feature;
+export default Feature_15;

@@ -44,7 +44,7 @@ const Carousel_02: React.FC<ICarouselProps> = ({
     }, interval);
 
     return () => clearInterval(timer);
-  }, [interval, images.length]);
+  }, [interval, images]);
 
   return (
     <div className="w-full dark:bg-slate-800">

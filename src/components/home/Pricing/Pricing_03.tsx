@@ -1,3 +1,4 @@
+// 这是一个展示定价的组件，可以展示不同的定价方案，包括月付和年付，以及不同的价格和功能。
 import { Button } from "@ui/button";
 import { Check, Pencil, Star, Sparkles } from "lucide-react";
 import { cn } from "@ui/utils";

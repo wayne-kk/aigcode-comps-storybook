@@ -29,6 +29,9 @@ type HeroContent = {
   ctaHref?: string;
   bottomImage?: string;
   worksWith?: string[];
+  emailPlaceholder?: string; // Placeholder text for email input field
+  trialText?: string; // Trial period text
+  worksWithLabel?: string; // "Works with" label text
 };
 
 type Hero42Props = {
@@ -44,6 +47,9 @@ const defaultContent: HeroContent = {
   ctaHref: "#",
   bottomImage: "https://help.apple.com/assets/679AD2D1E874AD22770DE1E0/679AD2D56EA7B10C9E01288F/en_US/3d2b57c8027ae355aa44421899389008.png",
   worksWith: ["Slack", "Teams", "Discord", "Email", "AND MORE"],
+  emailPlaceholder: "Your work email",
+  trialText: "Free 14 day trial",
+  worksWithLabel: "Works with",
 };
 
 const Hero_42: React.FC<Hero42Props> = ({ content = defaultContent }) => {
@@ -314,7 +320,7 @@ const Hero_42: React.FC<Hero42Props> = ({ content = defaultContent }) => {
             >
                 <input
                     type="email"
-                    placeholder="Your work email"
+                    placeholder={content.emailPlaceholder}
                     required
                     aria-label="Work Email"
                     className="flex-grow w-full sm:w-auto px-4 py-2 rounded-md bg-[#2a2a2a] border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#0CF2A0] focus:border-transparent transition-all"
@@ -336,7 +342,7 @@ const Hero_42: React.FC<Hero42Props> = ({ content = defaultContent }) => {
                 animate="visible"
                 className="text-xs text-gray-500 mb-10"
             >
-                Free 14 day trial
+                {content.trialText}
             </motion.p>
 
             <motion.div
@@ -345,7 +351,7 @@ const Hero_42: React.FC<Hero42Props> = ({ content = defaultContent }) => {
                 animate="visible"
                 className="flex flex-col items-center justify-center space-y-2 mb-10"
             >
-                <span className="text-xs uppercase text-gray-500 tracking-wider font-medium">Works with</span>
+                <span className="text-xs uppercase text-gray-500 tracking-wider font-medium">{content.worksWithLabel}</span>
                 <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-gray-400">
                        {content.worksWith?.map((item, idx) => (
                          <span key={item + idx} className="flex items-center whitespace-nowrap">{item}</span>

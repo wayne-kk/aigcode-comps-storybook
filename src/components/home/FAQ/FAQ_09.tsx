@@ -71,8 +71,8 @@ function FAQ_09({
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="flex gap-10 flex-col">
             <div className="flex gap-4 flex-col">
-              <div>
-                <Badge variant="outline">{badge}</Badge>
+              <div className="flex justify-start">
+                <Badge variant="outline" className="rounded-full px-4 font-bold">{badge}</Badge>
               </div>
               <div className="flex gap-2 flex-col">
                 <h4 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-left font-regular">
@@ -82,8 +82,8 @@ function FAQ_09({
                   {description}
                 </p>
               </div>
-              <div className="">
-                <Button className="gap-4" variant="outline" onClick={onButtonClick}>
+              <div className="flex justify-start">
+                <Button className="!px-4 gap-4 bg-white hover:bg-gray-100 text-black border border-gray-300 hover:border-gray-400" variant="outline" onClick={onButtonClick}>
                   {buttonText} <PhoneCall className="w-4 h-4" />
                 </Button>
               </div>
@@ -95,7 +95,7 @@ function FAQ_09({
                 <AccordionTrigger>
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent>
+                <AccordionContent className="text-left">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
